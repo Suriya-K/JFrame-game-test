@@ -3,12 +3,13 @@ package com.suriya.src;
 import javax.swing.JFrame;
 
 public class Main {
+	public final static int WIDTH = 640,HEIGHT = 480;
 	public static JFrame frame = null;
 
 	public static void main(String args[]) {
 		frame = new JFrame("Test game");
 		frame.pack();
-		frame.setSize(640, 480);
+		frame.setSize(WIDTH, HEIGHT);
 		frame.add(new Game());
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);
