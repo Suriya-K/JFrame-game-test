@@ -7,12 +7,15 @@ import java.net.URL;
 
 import javax.swing.ImageIcon;
 
+import com.suriya.src.Main;
 import com.suriya.src.GlobalPositions;
 
 public class Player extends GlobalPositions {
 
 	private String playerImgURL = "/img/test.png";
 	int xDir = 0, yDir = 0;
+	int roomWidthBorder = 640-32;
+	int roowHeightBorder = 480-32;
 
 	public Player(int x, int y) {
 		super(x, y);
@@ -21,6 +24,19 @@ public class Player extends GlobalPositions {
 	public void update() {
 		x += xDir;
 		y += yDir;
+		
+		// collision windows
+		setWindowsdCollison();
+	}
+	
+	public void setWindowsdCollison() {
+		if(x < 0) {
+			x = 0;
+		}
+		if(x > roomWidthBorder) {
+			x = roomWidthBorder;
+		}
+		
 	}
 
 	public void keyPressed(KeyEvent e) {
@@ -58,6 +74,7 @@ public class Player extends GlobalPositions {
 //			xDir = 0;
 //		}
 	}
+	
 
 	public void draw(Graphics2D g2d) {
 		g2d.drawImage(getPlayerImage(), x, y, null);

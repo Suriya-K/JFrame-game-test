@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 
 import com.suriya.src.inputs.Keyinput;
+import com.suriya.src.objects.Enemy;
 import com.suriya.src.objects.Player;
 
 public class Game extends JPanel implements ActionListener {
@@ -20,6 +21,7 @@ public class Game extends JPanel implements ActionListener {
 	private String backgroundImgURL = "/img/Background.png";
 	Timer gameLoop;
 	Player p;
+	Enemy e;
 
 	// init
 	public Game() {
@@ -27,6 +29,7 @@ public class Game extends JPanel implements ActionListener {
 		gameLoop = new Timer(10, this);
 		gameLoop.start();
 		p = new Player(xroomCenter, yroomCenter);
+		e = new Enemy(200,200);
 		addKeyListener(new Keyinput(p));
 	}
 
@@ -36,6 +39,7 @@ public class Game extends JPanel implements ActionListener {
 		Graphics2D g2d = (Graphics2D) g;
 		g2d.drawImage(getBackgroundImage(), 0, 0, this);
 		p.draw(g2d);
+		e.draw(g2d);
 		
 	}
 
