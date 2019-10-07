@@ -1,9 +1,10 @@
 package com.suriya.src;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 public class Main {
-	public final static int WIDTH = 640,HEIGHT = 480;
+	public final static int WIDTH = 640, HEIGHT = 480;
 	public static JFrame frame = null;
 
 	public static void main(String args[]) {

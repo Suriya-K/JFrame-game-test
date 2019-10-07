@@ -10,26 +10,29 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import com.suriya.src.inputs.Ammo;
 import com.suriya.src.inputs.Keyinput;
 import com.suriya.src.inputs.Spawner;
+import com.suriya.src.objects.Bullet;
 import com.suriya.src.objects.Enemy;
 import com.suriya.src.objects.Player;
 
 public class Game extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
-	private int xroomCenter = 640 / 2;
-	private int yroomCenter = 480 / 2;
 	private String backgroundImgURL = "/img/Background.png";
 	Timer gameLoop;
 	Player p;
 	Spawner spawnEnemy;
+	static Ammo playerAmmo;
+	Bullet playerBullet;
 
 	// init
 	public Game() {
 		setFocusable(true);
 		gameLoop = new Timer(10, this);
 		gameLoop.start();
-		p = new Player(xroomCenter, yroomCenter);
+		p = new Player(Main.WIDTH/2, Main.HEIGHT-70);
+		playerAmmo = new Ammo();
 		spawnEnemy = new Spawner();
 		addKeyListener(new Keyinput(p));
 	}
@@ -41,6 +44,7 @@ public class Game extends JPanel implements ActionListener {
 		g2d.drawImage(getBackgroundImage(), 0, 0, this);
 		p.draw(g2d);
 		spawnEnemy.draw(g2d);
+		playerAmmo.draw(g2d);
 		
 	}
 
@@ -55,5 +59,6 @@ public class Game extends JPanel implements ActionListener {
 		repaint();
 		p.update();
 		spawnEnemy.update();
+		playerAmmo.update();
 	}
 }
